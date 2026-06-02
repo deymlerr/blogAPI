@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: '*',
+    origin: 'https://lumbera-blog-site.vercel.app/',
     credentials: true,
 };
 
