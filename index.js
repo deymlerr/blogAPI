@@ -12,8 +12,14 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-    origin: 'https://lumbera-blog-site.vercel.app/',
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps or curl)
+        callback(null, true);
+    },
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
+    optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
